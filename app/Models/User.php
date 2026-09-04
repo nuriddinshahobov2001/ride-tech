@@ -50,4 +50,14 @@ class User extends Authenticatable
             'role' => UserRole::class,
         ];
     }
+
+    public function cars(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Car::class);
+    }
+
+    public function isDriver(): bool
+    {
+        return $this->role === UserRole::DRIVER;
+    }
 }
